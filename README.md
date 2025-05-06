@@ -86,10 +86,10 @@ docker build -t francois013/yonder-workshop:wordpress ./wordpress
 ## 🚀 Run the Containers
 
 ```bash
-# Start MySQL container
-docker run -d --name francois013/yonder-workshop:mysql
+# Start MySQL container with the name wordpress-mysql in detached mode.
+docker run -d --name wordpress-mysql francois013/yonder-workshop:mysql
 
-# Start WordPress container
+# Runs Wordpress container with the name wordpress with hostport 8080, container port 80, that links wordpress to the database container and it runs in detached mode. 
 docker run -d --name wordpress -p 8080:80 --link wordpress-mysql:mysql francois013/yonder-workshop:wordpress
 ```
 
