@@ -33,16 +33,20 @@ docker run -d --name wordpress-mysql -e MYSQL_ROOT_PASSWORD=dit-is-super-geheim 
 docker run -d --name wordpress -e WORDPRESS_DB_HOST=wordpress-mysql:3306 -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=dit-is-super-geheim -p 8080:80 --link wordpress-mysql:mysql wordpress
 ```
 
+Access WordPress at: [http://localhost:8080](http://localhost:8080)
+
 ---
 
-**Opdracht 3: Dockerfiles**  
+**Opdracht 3: Creating the manifest**  
 
 ## 📁 Dockerfile for MySQL
 
 ```Dockerfile
 # Dockerfile.mysql
+#FROM gets the base image for the build.
 FROM mysql:latest
 
+#ENV sets the required and optional variables for the mysql database.
 ENV MYSQL_ROOT_PASSWORD=dit-is-super-geheim
 ENV MYSQL_DATABASE=wordpress
 ```
@@ -51,25 +55,33 @@ ENV MYSQL_DATABASE=wordpress
 
 ```Dockerfile
 # Dockerfile.wordpress
+#FROM gets the base image for the build.
 FROM wordpress:latest
 
+#ENV sets the required variables for the wordpress application.
 ENV WORDPRESS_DB_HOST=wordpress-mysql:3306
 ENV WORDPRESS_DB_NAME=wordpress
 ENV WORDPRESS_DB_USER=root
 ENV WORDPRESS_DB_PASSWORD=mdit-is-super-geheim
 ```
 
+---
+
+**Opdracht 4: Building the images**  
+
 ## 🏗️ Build the Images
 
 ```bash
-# Build MySQL image
+# Build MySQL image with a tag based on the Dockerfile in the ./mysql-wordpress folder. (Change the tag to something like: mysql:yonder)
 docker build -t francois013/yonder-workshop:mysql ./mysql-wordpress
 
-# Build WordPress image
+# Build WordPress image with a tag based on the Dockerfile in the ./wordpress folder. (Change the tag to something like: wordpress:yonder)
 docker build -t francois013/yonder-workshop:wordpress ./wordpress
 ```
 
 ---
+
+**Opdracht 5: Run the containers**  
 
 ## 🚀 Run the Containers
 
