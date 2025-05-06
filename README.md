@@ -8,6 +8,8 @@
 - [Mac Install](https://docs.docker.com/desktop/setup/install/mac-install/)
 - [Linux Install](https://docs.docker.com/desktop/setup/install/linux/)
 
+---
+
 **Opdracht 2: Docker CLI (Basic)**  
 
 ```Bash
@@ -33,17 +35,17 @@ docker run -d --name wordpress -e WORDPRESS_DB_HOST=wordpress-mysql:3306 -e WORD
 
 ---
 
+**Opdracht 3: Dockerfiles**  
+
 ## 📁 Dockerfile for MySQL
 
 ```Dockerfile
 # Dockerfile.mysql
-FROM mysql:5.7
+FROM mysql:latest
 
 ENV MYSQL_ROOT_PASSWORD=dit-is-super-geheim
 ENV MYSQL_DATABASE=wordpress
 ```
-
----
 
 ## 📁 Dockerfile for WordPress
 
@@ -56,8 +58,6 @@ ENV WORDPRESS_DB_NAME=wordpress
 ENV WORDPRESS_DB_USER=root
 ENV WORDPRESS_DB_PASSWORD=mdit-is-super-geheim
 ```
-
----
 
 ## 🏗️ Build the Images
 
