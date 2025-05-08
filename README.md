@@ -46,6 +46,58 @@ Dit is ideaal voor cloudomgevingen met dynamische workloads.
 
 ---
 
+**De Theorie bij opdracht 1**  
+
+![dockerarch](./images/dockerarch.png)
+
+*Overzicht van de Docker-architectuur*  
+
+1. Client
+Links zie je de Docker Client. Dit is het onderdeel waarmee de gebruiker communiceert, meestal via de opdrachtregel (CLI) of via een Remote API. De gebruiker voert commando’s uit zoals:  
+
+- docker build
+- docker pull
+- docker run
+
+Deze opdrachten worden doorgegeven aan de Docker Daemon.  
+
+2. Daemon (Docker Engine)
+
+De Docker Daemon (de rode boot in het midden) draait op de host en voert de commando’s van de client uit. Het beheert:  
+
+- Containers
+- Images
+- Netwerken
+- Volumes
+
+De Daemon zorgt ervoor dat containers worden gestart, gestopt en beheerd.  
+
+3. Containers
+
+Aan de linkerkant in het host-gedeelte zie je drie containers in verschillende kleuren (rood, blauw, geel).  
+Dit zijn de draaiende instanties van Docker-images.  
+Ze bevatten de applicaties die in isolatie draaien.  
+
+4. Images
+
+In het midden onder de Daemon staan gestapelde Docker-images.  
+Een image is een alleen-lezen sjabloon met de instructies om een container te maken (zoals een snapshot van een OS + applicatie).  
+De daemon gebruikt deze om containers te starten.
+
+5. Registry
+
+Rechts staat de Docker Registry, bijvoorbeeld Docker Hub.  
+Dit is een centrale opslagplaats waar Docker-images worden opgeslagen en gedeeld.  
+
+- Je kunt images pullen (downloaden) van de hub.
+- Je kunt zelfgebouwde images pushen (uploaden) naar de hub zodat anderen ze kunnen gebruiken.
+
+*Kleurenlegenda*  
+
+- Paars (Build): De client bouwt een image met een Dockerfile.
+- Oranje (Pull): Een image wordt opgehaald vanuit een registry zoals Docker Hub.
+- Groen (Run): Een image wordt als container uitgevoerd door de daemon.
+
 **Opdracht 1: Install Docker**  
 
 - [Windows Install](https://docs.docker.com/desktop/setup/install/windows-install/)
@@ -80,6 +132,46 @@ docker run -d --name wordpress -e WORDPRESS_DB_HOST=wordpress-mysql:3306 -e WORD
 Access WordPress at: [http://localhost:8080](http://localhost:8080)
 
 ---
+
+**De Theorie bij opdracht 3 & 4**  
+
+![docconstruc](./images/docconstruc.png)
+
+*Containers bouwen/builden/bakken*  
+
+1. Dockerfile  
+
+Links zie je een Dockerfile.  
+Dit is een tekstbestand met een reeks instructies die beschrijven hoe een Docker-image moet worden gebouwd.  
+Typische instructies zijn:
+
+- Welk basisonderdeel te gebruiken (FROM)
+- Welke commando’s moeten worden uitgevoerd (RUN)
+- Welke bestanden gekopieerd moeten worden (COPY)
+- Welk commando moet worden uitgevoerd bij opstarten (CMD)
+
+Dit is als het ware het “recept” voor de image.  
+
+2. Docker Image  
+
+In het midden zie je de Docker Image.  
+Dit is het resultaat van het uitvoeren van de docker build opdracht op een Dockerfile.  
+
+Een Docker image is een statische blauwdruk waarin alles zit wat nodig is om een container te draaien: code, bibliotheken, configuraties, enzovoort.  
+
+3. Docker Container  
+
+Rechts zie je de Docker Container.  
+Dit is een draaiende instantie van een image.  
+Je start deze door docker run uit te voeren.
+
+De container is geïsoleerd van het systeem, maar deelt wel de kernel van het besturingssysteem.  
+Hierdoor zijn containers lichtgewicht en snel op te starten.
+
+Samenvatting van het proces:
+
+- Dockerfile → (build) → Docker Image
+- Docker Image → (run) → Docker Container
 
 **Opdracht 3: Creating the manifest**  
 
