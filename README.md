@@ -26,7 +26,7 @@ Containers zijn vooral nuttig in de volgende situaties:
 
 ## Containers vs Servers (Virtuele Machines)
 
-[vmsvscontainers](./images/vmsvscon.png)
+![vmsvscontainers](./images/vmsvscon.png)
 
 - **Machine Virtualisatie (links)**: Elke applicatie draait in een eigen virtuele machine met een volledig guest-besturingssysteem. Dit zorgt voor extra overhead.
 - **Containers (rechts)**: Alle containers delen het besturingssysteem van de host en draaien via een container engine (zoals Docker). Hierdoor zijn ze lichter en sneller op te starten.
@@ -38,7 +38,7 @@ Dit is ideaal voor cloudomgevingen met dynamische workloads.
 
 ## Monolithisch vs Micro/Serverless Architectuur
 
-[monovsmicro](./images/monovsmicro.png)
+![monovsmicro](./images/monovsmicro.png)
 
 - **Monolithisch**: Eén grote applicatie waarbij alle onderdelen met elkaar verbonden zijn. Moeilijk te updaten of te schalen.
 - **Microservices**: Elke functie of service draait in een eigen container. Makkelijker te beheren, onafhankelijk te deployen en te schalen.
