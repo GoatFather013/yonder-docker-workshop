@@ -98,6 +98,8 @@ Dit is een centrale opslagplaats waar Docker-images worden opgeslagen en gedeeld
 - Oranje (Pull): Een image wordt opgehaald vanuit een registry zoals Docker Hub.
 - Groen (Run): Een image wordt als container uitgevoerd door de daemon.
 
+---
+
 **Opdracht 1: Install Docker**  
 
 - [Windows Install](https://docs.docker.com/desktop/setup/install/windows-install/)
@@ -172,6 +174,8 @@ Samenvatting van het proces:
 
 - Dockerfile → (build) → Docker Image
 - Docker Image → (run) → Docker Container
+
+---
 
 **Opdracht 3: Creating the manifest**  
 
